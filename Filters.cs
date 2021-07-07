@@ -6,9 +6,9 @@ namespace ImageProcessing
 {
     public static class Filters
     {
-        public static int Brightness { get; set; } = 0;
-        public static int Contrast { get; set; } = 1;
-        public static int HSV { get; set; } = 0;
+        public static int Brightness { get; set; }
+        public static int Contrast { get; set; }
+        public static int HSV { get; set; }
         
         public static Image<Gray, byte> GrayFilter(Image<Bgr, byte> editableImage)
         {
@@ -118,7 +118,7 @@ namespace ImageProcessing
             return editableImage;
         }
 
-        public static Image<Bgr, byte> winAll(Image<Bgr, byte> editableImage, Image<Bgr, byte> winImg, params int[] v)
+        public static Image<Bgr, byte> WinAll(Image<Bgr, byte> editableImage, Image<Bgr, byte> winImg, params int[] v)
         {
             int[,] w;
             w = new int[3, 3]
@@ -128,12 +128,12 @@ namespace ImageProcessing
                 {v[6],  v[7], v[8]}
             };
 
-            windowFilter(editableImage, winImg, w);
+            WindowFilter(editableImage, winImg, w);
 
             return winImg;
         }
 
-        private static Image<Bgr, byte> windowFilter(Image<Bgr, byte> editableImage, Image<Bgr, byte> winImg, int[,] v)
+        private static Image<Bgr, byte> WindowFilter(Image<Bgr, byte> editableImage, Image<Bgr, byte> winImg, int[,] v)
         {
             for (int ch = 0; ch < 3; ch++)
             {
